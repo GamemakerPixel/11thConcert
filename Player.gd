@@ -31,7 +31,13 @@ func shoot(type):
 	var bullet = preload("res://11thConcert/PlayerBullet.tscn")
 	var b = bullet.instance()
 	if type == 0:
-		var bulletRotation = $Sprite.rotation
-		var bulletVelocity = Vector2(10, 0).rotated($Sprite.rotation)
-		get_parent().add_child(b)
-		b.start(bulletVelocity, bulletRotation)
+		if canShoot[0]:
+			canShoot[0] = false
+			$left_cooldown.start()
+			var bulletRotation = $Sprite.rotation
+			var bulletVelocity = Vector2(10, 0).rotated($Sprite.rotation)
+			get_parent().add_child(b)
+			b.start(bulletVelocity, bulletRotation)
+
+func _on_left_cooldown_timeout():
+	canShoot[0] = true
