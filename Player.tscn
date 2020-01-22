@@ -19,3 +19,7 @@ shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+
+[node name="left_cooldown" type="Timer" parent="."]
+wait_time = 0.8
+[connection signal="timeout" from="left_cooldown" to="." method="_on_left_cooldown_timeout"]
