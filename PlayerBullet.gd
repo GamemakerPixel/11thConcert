@@ -11,3 +11,15 @@ func start(Velocity_, rotation_):
 
 func _physics_process(delta):
 	position += Velocity
+
+func _on_Lifetime_timeout():
+	explode()
+
+func explode():
+	queue_free()
+
+func _on_Bullet_body_entered(body):
+	if body.name != "Player":
+		if body.has_method("take_damage"):
+			body.take_damage(damage)
+		explode()
