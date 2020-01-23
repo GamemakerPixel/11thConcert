@@ -60,3 +60,6 @@ func _on_left_cooldown_timeout():
 
 func _on_right_cooldown_timeout():
 	canShoot[1] = true
+
+func take_damage(damage_):
+	print(damage_)
