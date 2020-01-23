@@ -3,8 +3,10 @@ extends Area2D
 export (int) var damage
 var Velocity = Vector2()
 
-func start(Velocity_, rotation_):
-	position = get_parent().get_node("Player").position
+func start(Velocity_, rotation_, position_):
+	$Sprite.modulate = GlobalVariables.colors[1]
+	position = position_
+	print(rotation_)
 	var direction = Vector2(1, 0).rotated(rotation_)
 	rotation = rotation_
 	Velocity = Velocity_
