@@ -6,6 +6,11 @@ var playerPos = Vector2(0, 0)
 func _ready():
 	generateColors()
 
+func _process(delta):
+	if Input.is_action_just_pressed("ui_accept"):
+		colors.clear()
+		generateColors()
+
 func generateColors():
 	var colorsLeft = 6
 	var rng = RandomNumberGenerator.new()
