@@ -21,7 +21,7 @@ func explode():
 	queue_free()
 
 func _on_Bullet_body_entered(body):
-	if body.name == "Player":# || body.type == StaticBody2D:
+	if body.name == "Player" || body.get_parent().name == "Walls":
 		if body.has_method("take_damage"):
 			body.take_damage(damage)
 		explode()
