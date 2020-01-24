@@ -31,6 +31,9 @@ func _process(delta):
 		shoot(0)
 	if Input.is_action_pressed("mouse_right"):
 		shoot(1)
+	if Input.is_action_just_pressed("ui_accept"):
+		if GlobalVariables.colors.size() > 0:
+			$Sprite.modulate = GlobalVariables.colors[0]
 
 func shoot(type):
 	var bullet = preload("res://11thConcert/PlayerBullet.tscn")
