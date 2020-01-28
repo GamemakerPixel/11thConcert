@@ -12,9 +12,10 @@ func _ready():
 	$Sprite.modulate = GlobalVariables.colors[4]
 
 func _process(delta):
+	if health < 3:
+		readyToFire = true
 	if readyToFire:
 		var playerEnemyDistance = position.distance_to(GlobalVariables.playerPos)
-		print(playerEnemyDistance)
 		if playerEnemyDistance > 192: 
 			Velocity = Vector2(100, 0)
 		elif playerEnemyDistance < 128:
