@@ -1,7 +1,7 @@
 extends Node2D
 
 export (bool) var spawnRoom
-var enemySpawnChance = 100
+var enemySpawnChance = 50
 var powerupSpawnChance = 25
 var enemy = preload("res://11thConcert/Enemy.tscn")
 
