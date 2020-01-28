@@ -9,6 +9,10 @@ func _ready():
 	if GlobalVariables.colors.size() > 0:
 		$Sprite.modulate = GlobalVariables.colors[0]
 
+func buff(stat, value):
+	if stat == "speed":
+		speed *= value
+
 func _physics_process(delta):
 	if Input.is_action_pressed("ui_right"):
 		motion.x = speed
@@ -25,6 +29,14 @@ func _physics_process(delta):
 	move_and_slide(motion)
 
 func _process(delta):
+	#DEBUG COMMANDS
+	if Input.is_action_just_pressed("a"):
+		$Camera2D.zoom = Vector2(1, 1)
+	if Input.is_action_just_pressed("z"):
+		$Camera2D.zoom = Vector2(2, 2)
+	if Input.is_action_just_pressed("x"):
+		$Camera2D.zoom = Vector2(5, 5)
+	#/DEGUB COMMANDS
 	GlobalVariables.playerPos = position
 	$Sprite.look_at(get_global_mouse_position())
 	if Input.is_action_pressed("mouse_left"):
@@ -65,4 +77,4 @@ func _on_right_cooldown_timeout():
 	canShoot[1] = true
 
 func take_damage(damage_):
-	print(damage_)
+	pass
