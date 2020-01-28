@@ -6,8 +6,6 @@ var Velocity = Vector2()
 func start(Velocity_, rotation_, position_):
 	$Sprite.modulate = GlobalVariables.colors[5]
 	position = position_
-	print(rotation_)
-	var direction = Vector2(1, 0).rotated(rotation_)
 	rotation = rotation_
 	Velocity = Velocity_
 
