@@ -31,7 +31,6 @@ func placeRooms():
 			r.position = roomPos
 	if onRoom.y < rooms.y:
 		placeRooms()
-	print(roomPositions)
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
