@@ -53,7 +53,7 @@ func shoot(type):
 			var bulletRotations = [deg2rad(0), deg2rad(45), deg2rad(90), deg2rad(135), deg2rad(180), deg2rad(225), deg2rad(270), deg2rad(315)]
 			var bulletVelocities = []
 			for rot in bulletRotations:
-				bulletVelocities.append(Vector2(10, 0).rotated(rot))
+				bulletVelocities.append(Vector2(20, 0).rotated(rot))
 			var bs = [bullet.instance(), bullet.instance(), bullet.instance(), bullet.instance(), bullet.instance(), bullet.instance(), bullet.instance(), bullet.instance()]
 			for bullet_ in bs:
 				get_parent().add_child(bullet_)
