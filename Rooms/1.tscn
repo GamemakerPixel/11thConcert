@@ -7,6 +7,7 @@
 script = ExtResource( 1 )
 
 [node name="Walls" type="Node2D" parent="."]
+editor/display_folded = true
 
 [node name="Wall36" parent="Walls" instance=ExtResource( 2 )]
 position = Vector2( 416, -416 )
@@ -141,7 +142,6 @@ position = Vector2( -352, -416 )
 position = Vector2( -416, 416 )
 
 [node name="EnemySpawns" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="1" type="Position2D" parent="EnemySpawns"]
 position = Vector2( -224, -224 )
