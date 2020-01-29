@@ -4,14 +4,31 @@ export (int) var speed
 
 var motion = Vector2()
 var canShoot = [true, true]
+var buffed = [false, false, false]
+var buffedTime = [0, 0, 0]
+var damage = 1
 
 func _ready():
 	if GlobalVariables.colors.size() > 0:
 		$Sprite.modulate = GlobalVariables.colors[0]
 
 func buff(stat, value):
+	$BuffTimer.start()
 	if stat == "speed":
-		speed *= value
+		if not buffed[0]:
+			speed *= value
+			buffed[0] = true
+		buffedTime[0] += 5
+	if stat == "damage":
+		if not buffed[1]:
+			damage *= value
+			buffed[1] = true
+		buffedTime[1] += 5
+	if stat == "cooldown":
+		if not buffed[2]:
+			damage *= value
+			buffed[2] = true
+		buffedTime[2] += 5
 
 func _physics_process(delta):
 	if Input.is_action_pressed("ui_right"):
@@ -78,3 +95,26 @@ func _on_right_cooldown_timeout():
 
 func take_damage(damage_):
 	pass
+
+func _on_BuffTimer_timeout():
+	if buffedTime[0] > 0:
+		buffedTime[0] -= 0.1
+		$BuffTimer.start()
+	else:
+		if buffed[0]:
+			speed /= 2
+			buffed[0] = false
+	if buffedTime[1] > 0:
+		buffedTime[1] -= 0.1
+		$BuffTimer.start()
+	else:
+		if buffed[1]:
+			buffed[1] = false
+	if buffedTime[2] > 0:
+		buffedTime[2] -= 0.1
+		$BuffTimer.start()
+	else:
+		if buffed[2]:
+			$left_cooldown.wait_time = 0.8
+			$right_cooldown.wait_time = 2
+			buffed[2] = false
